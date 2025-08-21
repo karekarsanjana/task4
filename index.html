@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Todo App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <header class="header">
+        <div class="header-top">
+          <div class="title">
+            <h2>Todo App</h2>
+            <p>Keep it up!</p>
+          </div>
+
+          <!-- Counter circle aligned top-right -->
+          <div class="task-counter">
+            <span id="counter">0 / 0</span>
+          </div>
+        </div>
+
+        <!-- Progress row: track reserved space so circle doesn't overlap it -->
+        <div class="progress-row">
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Input -->
+      <div class="input-container">
+        <input id="task-input" type="text" placeholder="Write your task" />
+        <button id="add-btn" aria-label="Add task">+</button>
+      </div>
+
+      <!-- Task list -->
+      <ul id="task-list" class="task-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

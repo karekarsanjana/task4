@@ -1,0 +1,184 @@
+/* ---------- Reset & font ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:
+    linear-gradient(rgba(8,9,30,0.78), rgba(8,9,30,0.78)),
+    url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=80") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  color: #ffffff;
+}
+
+/* ---------- Outer wrapper & container ---------- */
+.wrapper { width: 100%; display:flex; justify-content:center; }
+.container {
+  width: min(760px, 96%);
+  background: rgba(15,17,40,0.45);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(4,6,30,0.7);
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Header (title + counter + progress) ---------- */
+.header {
+  background: rgba(255,255,255,0.03);
+  padding: 20px;
+  border-radius: 14px;
+  position: relative;
+  overflow: visible;
+}
+
+/* top row: title left, circle right */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title h2 {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.title p {
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* counter circle */
+.task-counter {
+  width: 78px;
+  height: 78px;
+  min-width: 78px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7c73ff 0%, #6b63ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 10px 28px rgba(107,99,255,0.18);
+}
+
+/* The progress row sits below the header-top.
+   The track width is reduced (calc) so the circle doesn't visually overlap the track area */
+.progress-row {
+  margin-top: 18px;
+}
+
+.progress-track {
+  width: calc(100% - 110px); /* reserve space for the circular counter on the right */
+  max-width: calc(100% - 110px);
+  height: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* little rounded inner fill */
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #32f0e6 0%, #31a6ff 100%);
+  transition: width 260ms ease;
+}
+
+/* ---------- Input row ---------- */
+.input-container {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+#task-input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: #ffffff;
+  color: #222;
+  box-shadow: 0 6px 18px rgba(2,3,16,0.35);
+}
+
+#task-input::placeholder { color: #9aa0ad; }
+
+#add-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(180deg,#7c73ff,#6b63ff);
+  color: white;
+  font-size: 26px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(107,99,255,0.18);
+}
+
+/* ---------- Task list ---------- */
+.task-list {
+  margin-top: 18px;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: #fff;
+  align-items: center;
+}
+
+.task-item .txt {
+  flex: 1;
+  font-size: 14px;
+}
+
+.task-item.completed .txt {
+  text-decoration: line-through;
+  color: #38f0ea;
+}
+
+/* small icon buttons (edit/delete) */
+.action-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px;
+}
+.action-btn.edit { color: #8a83ff; }
+.action-btn.del { color: #ff6a6a; }
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 520px) {
+  .container { padding: 18px; }
+  .header-top { gap: 10px; align-items: flex-start; }
+  .task-counter { width: 64px; height: 64px; min-width: 64px; font-size: 16px; }
+  .progress-track { width: calc(100% - 92px); }
+  #add-btn { width: 48px; height: 48px; font-size: 22px; }
+}
